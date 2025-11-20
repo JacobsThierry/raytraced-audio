@@ -121,7 +121,7 @@ func _cast_ray(to: Vector3) -> Dictionary:
 	var params: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(
 		global_position,
 		to,
-		0b01
+		collision_mask
 	)
 	ray_casts_this_tick += 1
 	return _space_state.intersect_ray(params)

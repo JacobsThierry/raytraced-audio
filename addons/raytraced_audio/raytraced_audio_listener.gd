@@ -231,11 +231,13 @@ func _cleanup_debug() -> void:
 	Performance.remove_custom_monitor(&"raytraced_audio/enabled_players_count")
 	
 
+@export_flags_3d_physics var audio_mask = 1
 
 ## Initiates this [RaytracedAudioListener]'s rays
 func setup() -> void:
 	for __ in rays_count:
 		var rc: AudioRay = AudioRay.new(max_raycast_dist, max_bounces)
+		rc.collision_mask = audio_mask
 		rc.set_scatter_model(ray_scatter_model)
 		add_child(rc, INTERNAL_MODE_BACK)
 		rays.push_back(rc)
